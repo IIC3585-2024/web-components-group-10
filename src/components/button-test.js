@@ -38,8 +38,6 @@ class Button extends HTMLElement {
   constructor() {
     super();
 
-    console.log("setting up my-button");
-
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.appendChild(template.content.cloneNode(true));
 
