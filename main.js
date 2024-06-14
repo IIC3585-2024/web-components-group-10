@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
 import "./src/components/button-test.js";
 import "./src/components/sell-item.js";
+import "./src/components/todo-list.js";
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -30,6 +31,7 @@ document.querySelector("#app").innerHTML = `
       >
       </sell-item>
     </div>
+    <todo-list></todo-list>
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>

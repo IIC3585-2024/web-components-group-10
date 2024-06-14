@@ -98,8 +98,6 @@ class SellItem extends HTMLElement {
   constructor() {
     super();
 
-    console.log("setting up sell-item");
-
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.appendChild(template.content.cloneNode(true));
 
