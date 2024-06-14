@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
 import "./src/components/button-test.js";
 import "./src/components/sell-item.js";
+import "./src/components/sell-itemLit.js"
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -30,10 +31,25 @@ document.querySelector("#app").innerHTML = `
       >
       </sell-item>
     </div>
+    <div style="display: flex;">
+    <sell-item-lit></sell-item-lit>
+    <sell-item-lit
+        image="${javascriptLogo}"
+        itemTitle="JavaScript Lit"
+        discountPrice="1.500"
+        normalPrice="2.000"
+        discount="25"
+        rating="4.0"
+      >
+      </sell-item-lit>
+    </div>
+
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
   </div>
+
+  
 `;
 
 setupCounter(document.querySelector("#counter"));
