@@ -2,18 +2,21 @@ const template = document.createElement("template");
 
 template.innerHTML = `
   <div class="container">
-    <input type="text" id="new-todo" placeholder="Add a new task">
+    <h1 id="title"></h1>
+    <input type="text" id="new-todo-input" placeholder="">
     <button id="add-todo-button">Add</button>
     <ul id="todo-list"></ul>
   </div>
+
   <style>
     .container {
       background-color: #ffffff;
       padding: 20px;
       border-radius: 5px;
+      color: black;
     }
 
-    #new-todo {
+    #new-todo-input {
       background-color: #fff;
       color: black;
       padding: 10px;
@@ -63,16 +66,15 @@ class TodoList extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$newTodoInput = shadowRoot.querySelector("#new-todo");
+    this.$todoTitle = shadowRoot.querySelector("#title");
+    this.$newTodoInput = shadowRoot.querySelector("#new-todo-input");
     this.$todoList = shadowRoot.querySelector("#todo-list");
     this.$addTodoButton = shadowRoot.querySelector("#add-todo-button");
 
-    this.$addTodoButton?.addEventListener("click", () => this.addTodo());
-
-    this.render();
+    this.$addTodoButton?.addEventListener("click", () => this.tryToAddTodo());
   }
 
-  addTodo() {
+  tryToAddTodo() {
     const newTodoText = this.$newTodoInput.value.trim();
 
     if (newTodoText === "") {
@@ -80,6 +82,12 @@ class TodoList extends HTMLElement {
       return;
     }
 
+    this.addTodo(newTodoText);
+
+    this.$newTodoInput.value = "";
+  }
+
+  addTodo(newTodoText) {
     const newTodo = document.createElement("li");
     newTodo.innerText = newTodoText;
 
@@ -92,11 +100,48 @@ class TodoList extends HTMLElement {
 
     newTodo.appendChild(deleteButton);
     this.$todoList.appendChild(newTodo);
-
-    this.$newTodoInput.value = "";
   }
 
-  render() {}
+  get todoTitle() {
+    return this.getAttribute("todoTitle") || "Title";
+  }
+
+  set todoTitle(value) {
+    this.setAttribute("todoTitle", value);
+  }
+
+  get placeholder() {
+    return this.getAttribute("placeholder") || "Placeholder";
+  }
+
+  set placeholder(value) {
+    this.setAttribute("placeholder", value);
+  }
+
+  get todos() {
+    return JSON.parse(this.getAttribute("todos") || "[]");
+  }
+
+  set todos(value) {
+    this.setAttribute("todos", JSON.stringify(value));
+  }
+
+  static get observedAttributes() {
+    return ["todoTitle", "placeholder", "todos"];
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.$todoTitle.innerText = this.todoTitle;
+    this.$newTodoInput.placeholder = this.placeholder;
+    this.$todoList.innerHTML = "";
+    this.todos.forEach((todo) => {
+      this.addTodo(todo);
+    });
+  }
 }
 
 window.customElements.define("todo-list", TodoList);

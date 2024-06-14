@@ -16,13 +16,13 @@ document.querySelector("#app").innerHTML = `
     </a>
     <h1>Hello Vite!</h1>
     <div class="card">
-      <my-button id="counter"></my-button>
-      <my-button id="counter2" no-padding></my-button>
-    </div>
-    <div style="display: flex;">
+      <my-button id="counter" label="Change other components"></my-button>
+      </div>
+      <div style="display: flex;">
       <sell-item></sell-item>
       <sell-item
-        image="${javascriptLogo}"
+        id="javascript"
+        imgUrl="${javascriptLogo}"
         itemTitle="JavaScript"
         discountPrice="1.500"
         normalPrice="2.000"
@@ -31,7 +31,13 @@ document.querySelector("#app").innerHTML = `
       >
       </sell-item>
     </div>
-    <todo-list></todo-list>
+    <my-button id="reset-todos" no-padding></my-button>
+    <todo-list
+      id="todo-list"
+      todoTitle="My Todos"
+      placeholder="What needs to be done?"
+      todos='["first todo", "second todo"]'
+    ></todo-list>
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
@@ -39,4 +45,11 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupCounter(document.querySelector("#counter"));
-setupCounter(document.querySelector("#counter2"));
+document.querySelector("#reset-todos")?.addEventListener("click", () => {
+  const sellItemJs = document.querySelector("#javascript");
+  sellItemJs.rating = "1.0";
+
+  const todoList = document.querySelector("#todo-list");
+  todoList.todos = ["first todo (button pressed)", "second todo (button pressed)"];
+  todoList.placeholder = "new placeholder";
+});

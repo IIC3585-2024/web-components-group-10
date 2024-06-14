@@ -16,7 +16,7 @@ template.innerHTML = `
     <div id="discount">-55%</div>
   </div>
   <div>
-    <p id="rating">Rating: 4.5</p>
+    <p id="rating">⭐ 4.5</p>
   </div>
 </div>
 
