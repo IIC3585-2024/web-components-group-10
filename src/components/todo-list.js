@@ -13,7 +13,12 @@ template.innerHTML = `
       background-color: #ffffff;
       padding: 20px;
       border-radius: 5px;
+      margin: 10px;
       color: black;
+    }
+
+    #title {
+      margin-top: 0px;
     }
 
     #new-todo-input {
