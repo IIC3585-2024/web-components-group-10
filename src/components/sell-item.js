@@ -5,8 +5,9 @@ template.innerHTML = `
   <img
     id="image"
     alt="Item Image"
+    src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
   />
-  <p id="item-title"></p>
+  <p id="item-title">Title</p>
   <div id="prices-discount-container">
     <div id="prices">
       <p id="discount-price">$79.990</p>
@@ -15,7 +16,7 @@ template.innerHTML = `
     <div id="discount">-55%</div>
   </div>
   <div>
-    <p id="rating">Rating: 4.5</p>
+    <p id="rating">⭐ 4.5</p>
   </div>
 </div>
 
@@ -98,8 +99,6 @@ class SellItem extends HTMLElement {
   constructor() {
     super();
 
-    console.log("setting up sell-item");
-
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -109,8 +108,6 @@ class SellItem extends HTMLElement {
     this.$normalPrice = shadowRoot.querySelector("#normal-price");
     this.$discount = shadowRoot.querySelector("#discount");
     this.$rating = shadowRoot.querySelector("#rating");
-
-    this.render();
   }
 
   static get observedAttributes() {
@@ -119,12 +116,12 @@ class SellItem extends HTMLElement {
 
   get imgUrl() {
     return (
-      this.getAttribute("image") || "https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
+      this.getAttribute("imgUrl") || "https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
     );
   }
 
   set imgUrl(value) {
-    this.setAttribute("image", value);
+    this.setAttribute("imgUrl", value);
   }
 
   get itemTitle() {
@@ -167,7 +164,7 @@ class SellItem extends HTMLElement {
     this.setAttribute("rating", value);
   }
 
-  attributeChangedCallBack() {
+  attributeChangedCallback() {
     this.render();
   }
 
