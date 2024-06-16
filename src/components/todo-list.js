@@ -17,8 +17,9 @@ template.innerHTML = `
       color: black;
     }
 
-    #title {
+    .title {
       margin-top: 0px;
+      color: red;
     }
 
     #new-todo-input {
@@ -72,6 +73,7 @@ class TodoList extends HTMLElement {
     shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.$todoTitle = shadowRoot.querySelector("#title");
+    this.$todoTitle.classList.add('title');
     this.$newTodoInput = shadowRoot.querySelector("#new-todo-input");
     this.$todoList = shadowRoot.querySelector("#todo-list");
     this.$addTodoButton = shadowRoot.querySelector("#add-todo-button");

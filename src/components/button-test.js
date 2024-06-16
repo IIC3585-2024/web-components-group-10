@@ -30,7 +30,7 @@ template.innerHTML = `
   </style>
 
   <div class="container">
-    <button>Label</button>
+    <button>First two todo (vainilla)</button>
   </div>
 `;
 

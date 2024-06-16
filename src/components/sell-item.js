@@ -11,7 +11,7 @@ template.innerHTML = `
   <div id="prices-discount-container">
     <div id="prices">
       <p id="discount-price">$79.990</p>
-      <p id="normal-price"><s>$175.990</s></p>
+      <p id="normal-price">Normal: <s>$175.990</s></p>
     </div>
     <div id="discount">-55%</div>
   </div>
