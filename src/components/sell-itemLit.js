@@ -1,14 +1,14 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 export class SellItemLit extends LitElement {
   static get properties() {
     return {
-      imgUrl: { type: String, attribute: 'image' },
+      imgUrl: { type: String, attribute: "image" },
       itemTitle: { type: String },
       discountPrice: { type: String },
       normalPrice: { type: String },
       discount: { type: String },
-      rating: { type: String }
+      rating: { type: String },
     };
   }
 
@@ -31,7 +31,8 @@ export class SellItemLit extends LitElement {
         object-fit: cover;
         margin: 0px;
       }
-      .item-title, .rating {
+      .item-title,
+      .rating {
         width: 200px;
         height: 40px;
         margin-top: 0px;
@@ -75,24 +76,27 @@ export class SellItemLit extends LitElement {
 
   constructor() {
     super(); // Llama al constructor de la clase padre (que es LitElement)
-    this.imgUrl = 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg';
-    this.itemTitle = 'Title Lit';
-    this.discountPrice = '79.990';
-    this.normalPrice = '175.990';
-    this.discount = '55';
-    this.rating = '4.5';
+    this.imgUrl = "https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg";
+    this.itemTitle = "Title Lit";
+    this.discountPrice = "79.990";
+    this.normalPrice = "175.990";
+    this.discount = "55";
+    this.rating = "4.5";
   }
 
   render() {
-    console.log("Rendering image with URL:", this.imgUrl); 
+    console.log("Rendering image with URL:", this.imgUrl);
     return html`
       <div class="container">
-        <img class="image" src="${this.imgUrl}" alt="Item Image">
-        <p class="item-title">${this.itemTitle}</p>
+        <img class="image" src="${this.imgUrl}" alt="Item Image" />
+        <p class="item-title title">${this.itemTitle}</p>
         <div class="prices-discount-container">
           <div class="prices">
             <p class="discount-price">$${this.discountPrice}</p>
-            <p class="normal-price">Normal: <s>$${this.normalPrice}</s></p>
+            <p class="normal-price">
+              Normal:
+              <s>$${this.normalPrice}</s>
+            </p>
           </div>
           <div class="discount">-${this.discount}%</div>
         </div>
@@ -104,4 +108,4 @@ export class SellItemLit extends LitElement {
   }
 }
 
-customElements.define('sell-item-lit', SellItemLit);
+customElements.define("sell-item-lit", SellItemLit);

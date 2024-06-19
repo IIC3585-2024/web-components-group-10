@@ -2,7 +2,7 @@ const template = document.createElement("template");
 
 template.innerHTML = `
   <div class="container">
-    <h1 id="title"></h1>
+    <h1 id="title" class="title"></h1>
     <input type="text" id="new-todo-input" placeholder="">
     <button id="add-todo-button">Add</button>
     <ul id="todo-list"></ul>
@@ -73,7 +73,7 @@ class TodoList extends HTMLElement {
     shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.$todoTitle = shadowRoot.querySelector("#title");
-    this.$todoTitle.classList.add('title');
+    this.$todoTitle.classList.add("title");
     this.$newTodoInput = shadowRoot.querySelector("#new-todo-input");
     this.$todoList = shadowRoot.querySelector("#todo-list");
     this.$addTodoButton = shadowRoot.querySelector("#add-todo-button");

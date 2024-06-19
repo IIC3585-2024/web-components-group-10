@@ -1,7 +1,5 @@
 import "./style.css";
 import javascriptLogo from "./javascript.svg";
-import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter.js";
 import "./src/components/button-test.js";
 import "./src/components/sell-item.js";
 import "./src/components/sell-itemLit.js";
@@ -35,29 +33,16 @@ function renderColorButtons() {
 }
 window.setColor = setColor;
 
-function renderInitPage() {
-  document.querySelector("#app").innerHTML = `
-    <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="${viteLogo}" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-        <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-      </a>
-      <h1>Hello Vite!</h1>
-      <div class="card">
-        <my-button id="counter" label="Change other components"></my-button>
-    </div>
-    
-    ${renderColorButtons()}
+// function renderInitPage() {
+//   document.querySelector("#app").innerHTML = `
+//     ${renderColorButtons()}
 
-    <p class="title">
-      Soy un texto con clase "title" del DOM Principal! Soy ... (Presiona un botón)
-    </p>
-      `;
-  setupCounter(document.querySelector("#counter"));
-  applyTitleColor();
-}
+//     <p class="title">
+//       Soy un texto con clase "title" del DOM Principal! Soy ... (Presiona un botón)
+//     </p>
+//       `;
+//   applyTitleColor();
+// }
 
 function renderVanillaPage() {
   document.querySelector("#app").innerHTML = `
@@ -75,13 +60,18 @@ function renderVanillaPage() {
       </sell-item>
     </div>
 
-    <my-button id="reset-todos" no-padding></my-button>
+    <my-button id="reset-todos" label="Change todos" no-padding></my-button>
     <todo-list
       id="todo-list"
       todoTitle="My Todos"
       placeholder="What needs to be done?"
       todos='["first todo", "second todo", "third todo", "fourth todo"]'
     ></todo-list>
+    ${renderColorButtons()}
+
+    <p class="title">
+      Soy un texto con clase "title" del DOM Principal! Soy ... (Presiona un botón)
+    </p>
   `;
   document.querySelector("#reset-todos")?.addEventListener("click", () => {
     const sellItemJs = document.querySelector("#javascript");
@@ -90,6 +80,7 @@ function renderVanillaPage() {
     const todoList = document.querySelector("#todo-list");
     todoList.todos = ["first todo (button pressed)", "second todo (button pressed)"];
   });
+  applyTitleColor();
 }
 
 function renderLitPage() {
@@ -114,7 +105,14 @@ function renderLitPage() {
       todos='["first todo Lit", "second todo Lit"]'
     ></todo-list-lit>
   </div>
+
+  ${renderColorButtons()}
+
+  <p class="title">
+    Soy un texto con clase "title" del DOM Principal! Soy ... (Presiona un botón)
+  </p>
 `;
+  applyTitleColor();
 }
 
 document.querySelector("navbar-lit").addEventListener("navigate", (e) => {
@@ -122,10 +120,8 @@ document.querySelector("navbar-lit").addEventListener("navigate", (e) => {
     renderVanillaPage();
   } else if (e.detail === "lit") {
     renderLitPage();
-  } else if (e.detail === "init") {
-    renderInitPage();
   }
 });
 
 applyTitleColor();
-renderInitPage();
+renderVanillaPage();

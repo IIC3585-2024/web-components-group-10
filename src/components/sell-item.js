@@ -7,7 +7,7 @@ template.innerHTML = `
     alt="Item Image"
     src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
   />
-  <p id="item-title">Title</p>
+  <p id="item-title" class="title">Title</p>
   <div id="prices-discount-container">
     <div id="prices">
       <p id="discount-price">$79.990</p>

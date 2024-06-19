@@ -1,5 +1,5 @@
 //Navbar hecha con ayuda de ChatGpt
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 export class NavbarLit extends LitElement {
   static get styles() {
@@ -14,7 +14,7 @@ export class NavbarLit extends LitElement {
         left: 0;
         z-index: 1000;
       }
-      
+
       .navbar a {
         flex: 1;
         color: #f2f2f2;
@@ -33,7 +33,6 @@ export class NavbarLit extends LitElement {
   render() {
     return html`
       <div class="navbar">
-        <a href="#" @click="${this.showInitPage}">Start</a>
         <a href="#" @click="${this.showVanillaPage}">Vanilla Components</a>
         <a href="#" @click="${this.showLitPage}">Lit Components</a>
       </div>
@@ -42,19 +41,13 @@ export class NavbarLit extends LitElement {
 
   showVanillaPage(e) {
     e.preventDefault();
-    this.dispatchEvent(new CustomEvent('navigate', { detail: 'vanilla' }));
+    this.dispatchEvent(new CustomEvent("navigate", { detail: "vanilla" }));
   }
 
   showLitPage(e) {
     e.preventDefault();
-    this.dispatchEvent(new CustomEvent('navigate', { detail: 'lit' }));
+    this.dispatchEvent(new CustomEvent("navigate", { detail: "lit" }));
   }
-
-  showInitPage(e) {
-    e.preventDefault();
-    this.dispatchEvent(new CustomEvent('navigate', { detail: 'init' }));
-  }
-
 }
 
-customElements.define('navbar-lit', NavbarLit);
+customElements.define("navbar-lit", NavbarLit);
