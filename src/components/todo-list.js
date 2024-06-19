@@ -79,6 +79,8 @@ class TodoList extends HTMLElement {
     this.$addTodoButton = shadowRoot.querySelector("#add-todo-button");
 
     this.$addTodoButton?.addEventListener("click", () => this.tryToAddTodo());
+
+    this.render();
   }
 
   tryToAddTodo() {

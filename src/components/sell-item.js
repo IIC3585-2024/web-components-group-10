@@ -5,18 +5,17 @@ template.innerHTML = `
   <img
     id="image"
     alt="Item Image"
-    src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
   />
-  <p id="item-title" class="title">Title</p>
+  <p id="item-title" class="title"></p>
   <div id="prices-discount-container">
     <div id="prices">
-      <p id="discount-price">$79.990</p>
-      <p id="normal-price">Normal: <s>$175.990</s></p>
+      <p id="discount-price"></p>
+      <p id="normal-price"></p>
     </div>
-    <div id="discount">-55%</div>
+    <div id="discount"></div>
   </div>
   <div>
-    <p id="rating">⭐ 4.5</p>
+    <p id="rating"></p>
   </div>
 </div>
 
@@ -108,6 +107,8 @@ class SellItem extends HTMLElement {
     this.$normalPrice = shadowRoot.querySelector("#normal-price");
     this.$discount = shadowRoot.querySelector("#discount");
     this.$rating = shadowRoot.querySelector("#rating");
+
+    this.render();
   }
 
   static get observedAttributes() {

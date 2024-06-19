@@ -74,11 +74,9 @@ function renderVanillaPage() {
     </p>
   `;
   document.querySelector("#reset-todos")?.addEventListener("click", () => {
-    const sellItemJs = document.querySelector("#javascript");
-    sellItemJs.rating = "1.0";
-
     const todoList = document.querySelector("#todo-list");
-    todoList.todos = ["first todo (button pressed)", "second todo (button pressed)"];
+    const newTodos = ["first todo (button pressed)", "second todo (button pressed)"];
+    todoList.todos = newTodos;
   });
   applyTitleColor();
 }
