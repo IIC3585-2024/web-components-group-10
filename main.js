@@ -4,23 +4,22 @@ import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
 import "./src/components/button-test.js";
 import "./src/components/sell-item.js";
-import "./src/components/sell-itemLit.js"
+import "./src/components/sell-itemLit.js";
 import "./src/components/todo-list.js";
 import "./src/components/todo-listLit.js";
-import "./src/components/navbar-lit.js"; 
-
+import "./src/components/navbar-lit.js";
 
 function applyTitleColor() {
-  const color = localStorage.getItem('titleColor') || 'blue';
-  document.documentElement.style.setProperty('--title-color', color);
-  const titleElement = document.querySelector('.title');
+  const color = localStorage.getItem("titleColor") || "blue";
+  document.documentElement.style.setProperty("--title-color", color);
+  const titleElement = document.querySelector(".title");
   if (titleElement) {
     titleElement.textContent = `Soy un texto con clase "title" del DOM Principal! Soy ${color}.`;
   }
 }
 
 function setColor(color) {
-  localStorage.setItem('titleColor', color);
+  localStorage.setItem("titleColor", color);
   applyTitleColor();
 }
 
@@ -56,8 +55,8 @@ function renderInitPage() {
       Soy un texto con clase "title" del DOM Principal! Soy ... (Presiona un botón)
     </p>
       `;
-    setupCounter(document.querySelector("#counter"));
-    applyTitleColor(); 
+  setupCounter(document.querySelector("#counter"));
+  applyTitleColor();
 }
 
 function renderVanillaPage() {
@@ -81,16 +80,16 @@ function renderVanillaPage() {
       id="todo-list"
       todoTitle="My Todos"
       placeholder="What needs to be done?"
-      todos='["first todo", "second todo"]'
+      todos='["first todo", "second todo", "third todo", "fourth todo"]'
     ></todo-list>
   `;
-    document.querySelector("#reset-todos")?.addEventListener("click", () => {
-      const sellItemJs = document.querySelector("#javascript");
-      sellItemJs.rating = "1.0";
+  document.querySelector("#reset-todos")?.addEventListener("click", () => {
+    const sellItemJs = document.querySelector("#javascript");
+    sellItemJs.rating = "1.0";
 
-      const todoList = document.querySelector("#todo-list");
-      todoList.todos = ["first todo (button pressed)", "second todo (button pressed)"];
-      });
+    const todoList = document.querySelector("#todo-list");
+    todoList.todos = ["first todo (button pressed)", "second todo (button pressed)"];
+  });
 }
 
 function renderLitPage() {
@@ -118,12 +117,12 @@ function renderLitPage() {
 `;
 }
 
-document.querySelector('navbar-lit').addEventListener('navigate', (e) => {
-  if (e.detail === 'vanilla') {
+document.querySelector("navbar-lit").addEventListener("navigate", (e) => {
+  if (e.detail === "vanilla") {
     renderVanillaPage();
-  } else if (e.detail === 'lit') {
+  } else if (e.detail === "lit") {
     renderLitPage();
-  } else if (e.detail === 'init') {
+  } else if (e.detail === "init") {
     renderInitPage();
   }
 });
